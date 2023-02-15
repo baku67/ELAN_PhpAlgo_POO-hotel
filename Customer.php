@@ -36,10 +36,13 @@
 
         public function printBookings(): string {
             $result = "";
+            $total = 0;
             foreach ($this->_booking as $booking) {
-                $result .= $booking->toString(). PHP_EOL;
+                $result .= $booking;
+                $total += $booking->getRoom()->getPrice();
                 // echo $booking->toString(). PHP_EOL;
             }
+            $result .= "<br>Total facture: " . $total;
             return $result;
         }
 
