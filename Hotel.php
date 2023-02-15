@@ -6,12 +6,21 @@
         protected string $_name;
         protected int $_nbrRooms;
         protected string $_address;
+        protected array $_roomList;
 
         // Constructor
         public function __construct(string $name, int $nbrRooms, string $address) {
             $this->_name = $name;
             $this->_nbrRooms = $nbrRooms;
             $this->_address = $address;
+            $this->_roomList = [];
+        }
+
+        public function getRoomList(): array {
+            return $this->_roomList;
+        }
+        public function setRoomList(array $roomList) {
+            $this->_roomList = $roomList;
         }
 
         public function getName(): string {
@@ -38,8 +47,27 @@
         
         // Methods
 
+        public function addRoom( Room $room ) {
+            $this->_roomList[] = $room;
+        }
+
+        public function printRoomList() {
+            echo "Liste des chambres de l'Hotel " . $this->getName(). "\n<br>";
+            foreach($this->_roomList as $room) {
+                echo " - " . $room . "\n";
+            }
+        }
+        public function printRoomDispoList() {
+            echo "Liste des chambres *disponibles* de l'Hotel " . $this->getName(). "\n<br>";
+            foreach($this->_roomList as $room) {
+                if(!$room->getStatus()) {
+                    echo " - " . $room . "\n";
+                }
+            }
+        }
+
         public function __toString() {
-            return "Hotel \"" . $this->getName() . "\": <br>Nombres de chambres: " . $this->getNbrRooms() . "<br>Adresse: " . $this->_address;
+            return "<span class='hotelName'>Hotel \"" . $this->getName() . "\":</span> <br>Nombres de chambres: " . $this->getNbrRooms() . "<br>Adresse: " . $this->_address . "<br>";
         }
 
     }
