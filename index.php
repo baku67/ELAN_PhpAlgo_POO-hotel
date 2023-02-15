@@ -6,6 +6,12 @@
     require "Customer.php";
     echo "<link rel='stylesheet' type='text/css' href='style.css'>";
 
+    echo "<h1>Instanciations:</h1><br>";
+
+    $customer1 = new Customer("Guénolé", "De Montaigu");
+    $customer2 = new Customer("Caroline", "Martinique");
+    echo $customer1 . "<br>";
+    echo $customer2. "<br>";
 
     $hotel1 = new Hotel("Hilton **** Strasbourg", 30, "10 route de la gare 67000 Strasbourg");
     echo $hotel1 . "<br>";
@@ -15,8 +21,14 @@
     echo $room1 . "<br>";
     echo $room2 . "<br>";
 
-    echo "-----------------------------------------------------------------------------<br>";
+    echo "-----------------------------------------------------------------------------<br><h1>Tests:</h1><br>";
 
     echo $hotel1->printRoomDispoList();
+
+    echo "<br><br>";
+    $resa1 = new Booking($hotel1, $room1, $customer1);
+    $resa2 = new Booking($hotel1, $room2, $customer2);
+    // echo $resa1. "<br>";
+    // echo $resa2. "<br>";
 
 ?>

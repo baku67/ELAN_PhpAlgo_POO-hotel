@@ -67,7 +67,7 @@
         }
 
         public function __toString() {
-            return "<span class='hotelName'>Hotel \"" . $this->getName() . "\":</span> <br>Nombres de chambres: " . $this->getNbrRooms() . "<br>Adresse: " . $this->_address . "<br>";
+            return "<span class='title'>Hotel \"" . $this->getName() . "\":</span> <br>Nombres de chambres: " . $this->getNbrRooms() . "<br>Adresse: " . $this->_address . "<br>";
         }
 
     }

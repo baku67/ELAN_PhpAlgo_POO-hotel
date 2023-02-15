@@ -75,7 +75,7 @@
 
 
         public function __toString() {
-            return "Description de la chambre: <br>Hotel: " . $this->_hotel->getName() . "<br>Wifi: ". $this->printWifi() . "<br>Price: " . $this->getPrice() . "<br>Nombre de lits: " . $this->getNbrBeds() ."<br>Status: " . $this->printStatus() . "<br>";
+            return "<span class='title'>Description de la chambre:</span> <br>Hotel: " . $this->_hotel->getName() . "<br>Wifi: ". $this->printWifi() . "<br>Price: " . $this->getPrice() . "<br>Nombre de lits: " . $this->getNbrBeds() ."<br>Status: " . $this->printStatus() . "<br>";
 
         }
     }

@@ -30,6 +30,8 @@
         }
         public function addBooking(Booking $booking) {
             $this->_booking[] = $booking;
+            echo "Nouvelle réservation pour " . $booking->getCustomer()->getFirstName(). " " .$booking->getCustomer()->getLastName(). "<br>Hotel \"" . $booking->getHotel()->getName(). "\" <br>Chambre:<br>". $booking->getRoom() . "<br>";
+
         }
 
 
@@ -40,7 +42,7 @@
         }
 
         public function __toString() {
-            return "Client: " . $this->_firstName.' '. $this->_lastName;
+            return "<span class='title'>Client:</span> " . $this->_firstName.' '. $this->_lastName . "<br>";
         }
 
     }
