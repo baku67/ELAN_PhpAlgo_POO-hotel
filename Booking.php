@@ -5,15 +5,26 @@
         private Hotel $_hotel;
         private Room $_room;
         private Customer $_customer;
+        private string $_dateFrom;
+        private string $_dateTo;
 
-        public function __construct(Hotel $hotel, Room $room, Customer $customer) {
+        public function __construct(Hotel $hotel, Room $room, Customer $customer, string $dateFrom, string $dateTo) {
             $this->_hotel = $hotel;
             $this->_room = $room;
             $this->_customer = $customer;
+            $this->_dateFrom = $dateFrom;
+            $this->_dateTo = $dateTo;
 
             $this->_customer->addBooking($this);
             $this->_hotel->addBooking($this);
             $this->_room->reserve();
+        }
+
+        public function getDateFrom(): string {
+            return $this->_dateFrom;
+        }
+        public function getDateTo(): string {
+            return $this->_dateTo;
         }
 
         public function getHotel(): Hotel {
@@ -37,8 +48,8 @@
         }
 
 
-        public function __toString() {
-            return "Réservation du customer \"" . $this->_customer->getFirstName() . " " . $this->_customer->getLastName() . ": " . $this->_hotel->getName(). ", chambre:<br> " . $this->_room;
+        public function __toString():string {
+            return "Réservation du customer \"" . $this->_customer->getFirstName() . " " . $this->_customer->getLastName() . ": " . $this->_hotel->getName(). ", chambre:<br> " . $this->_room  . "Du " . $this->getDateFrom() . " au " . $this->getDateTo() . "<br><br>";
         }
         // Lors d'un booking, l'ajouter a la liste bookings du customer
     }

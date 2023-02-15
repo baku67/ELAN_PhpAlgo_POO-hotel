@@ -26,8 +26,8 @@
     echo $hotel1->printRoomDispoList();
 
     echo "<br><br>";
-    $resa1 = new Booking($hotel1, $room1, $customer1);
-    $resa2 = new Booking($hotel1, $room2, $customer2);
+    $resa1 = new Booking($hotel1, $room1, $customer1, date('Y-m-d', strtotime("2023-05-02")), date('Y-m-d', strtotime("2023-06-03")));
+    $resa2 = new Booking($hotel1, $room2, $customer2, date('Y-m-d', strtotime("2023-07-22")), date('Y-m-d', strtotime("2023-07-26")));
     // echo $resa1. "<br>";
     // echo $resa2. "<br>";
 

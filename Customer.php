@@ -30,18 +30,20 @@
         }
         public function addBooking(Booking $booking) {
             $this->_booking[] = $booking;
-            echo "Nouvelle réservation pour " . $booking->getCustomer()->getFirstName(). " " .$booking->getCustomer()->getLastName(). "<br>Hotel \"" . $booking->getHotel()->getName(). "\" <br>Chambre:<br>". $booking->getRoom() . "<br>";
-
+            echo "Nouvelle réservation pour " . $booking->getCustomer()->getFirstName(). " " .$booking->getCustomer()->getLastName(). "<br>Hotel \"" . $booking->getHotel()->getName(). "\" <br>Chambre:<br>". $booking->getRoom() . "Du " . $booking->getDateFrom() . " au " . $booking->getDateTo() . "<br><br>";
         }
 
 
-        public function printBookings() {
+        public function printBookings(): string {
+            $result = "";
             foreach ($this->_booking as $booking) {
-                echo $booking->toString(). PHP_EOL;
+                $result .= $booking->toString(). PHP_EOL;
+                // echo $booking->toString(). PHP_EOL;
             }
+            return $result;
         }
 
-        public function __toString() {
+        public function __toString(): string {
             return "<span class='title'>Client:</span> " . $this->_firstName.' '. $this->_lastName . "<br>";
         }
 

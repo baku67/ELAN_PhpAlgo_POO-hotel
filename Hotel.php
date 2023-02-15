@@ -21,11 +21,12 @@
         public function getBookingList(): array {
             return $this->_bookingList;
         }
-        public function printBookingList(): void {
-            echo "Réservations de l'hôtel \"" . $this->getName() . "\":\n";
+        public function printBookingList(): string {
+            $result = "Réservations de l'hôtel \"" . $this->getName() . "\":\n";
             foreach($this->_bookingList as $booking) {
-                echo $booking . "<br>";
+                $result .= "<br>" . $booking . "<br>";
             }
+            return $result;
         }
 
         public function getRoomList(): array {
@@ -67,28 +68,32 @@
             $this->_roomList[] = $room;
         }
 
-        public function printRoomList() {
-            echo "Liste des chambres de l'Hotel " . $this->getName(). "\n<br>";
+        public function printRoomList():string {
+            $result = "Liste des chambres de l'Hotel " . $this->getName(). "\n<br>";
             foreach($this->_roomList as $room) {
-                echo " - " . $room . "\n";
+                $result .= " - " . $room . "\n";
             }
+            return $result;
         }
-        public function printRoomDispoList() {
+        public function printRoomDispoList():string {
+            $result = "Liste des chambres *disponibles* de l'Hotel " . $this->getName(). "\n<br>";
             $compteur = 0;
-            echo "Liste des chambres *disponibles* de l'Hotel " . $this->getName(). "\n<br>";
             foreach($this->_roomList as $room) {
                 if(!$room->getStatus()) {
+                    $result .= " - " . $room . "\n";
                     $compteur += 1;
-                    echo " - " . $room . "\n";
                 }
             }
             if ($compteur == 0) {
-                echo "Aucune chambre n'est disponible!\n";
+                $result .= "Aucune chambre n'est disponible!\n";
+                return $result;
             }
-
+            else {
+                return $result;
+            }
         }
 
-        public function __toString() {
+        public function __toString():string {
             return "<span class='title'>Hotel \"" . $this->getName() . "\":</span> <br>Nombres de chambres: " . $this->getNbrRooms() . "<br>Adresse: " . $this->_address . "<br>";
         }
 
