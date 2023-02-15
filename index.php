@@ -3,6 +3,7 @@
     require "Hotel.php";
     require "Room.php";
     require "Booking.php";
+    require "Customer.php";
     echo "<link rel='stylesheet' type='text/css' href='style.css'>";
 
 
