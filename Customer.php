@@ -30,7 +30,7 @@
         }
         public function addBooking(Booking $booking) {
             $this->_booking[] = $booking;
-            echo "Nouvelle réservation pour " . $booking->getCustomer()->getFirstName(). " " .$booking->getCustomer()->getLastName(). "<br>Hotel \"" . $booking->getHotel()->getName(). "\" <br>Chambre:<br>". $booking->getRoom() . "Du " . $booking->getDateFrom() . " au " . $booking->getDateTo() . "<br><br>";
+            echo "Nouvelle réservation pour " . $booking->getCustomer()->getFirstName(). " " .$booking->getCustomer()->getLastName(). "<br>Hotel \"" . $booking->getRoom()->getHotel()->getName(). "\" <br>Chambre:<br>". $booking->getRoom() . "Du " . $booking->getDateFrom() . " au " . $booking->getDateTo() . "<br><br>";
         }
 
 

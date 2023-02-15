@@ -2,21 +2,22 @@
 
     class Booking {
 
-        private Hotel $_hotel;
+        // Correction: On obtient l'hotel en passant pas la chambre (chaînage)
+        // private Hotel $_hotel;
         private Room $_room;
         private Customer $_customer;
         private string $_dateFrom;
         private string $_dateTo;
 
-        public function __construct(Hotel $hotel, Room $room, Customer $customer, string $dateFrom, string $dateTo) {
-            $this->_hotel = $hotel;
+        public function __construct(Room $room, Customer $customer, string $dateFrom, string $dateTo) {
             $this->_room = $room;
             $this->_customer = $customer;
             $this->_dateFrom = $dateFrom;
             $this->_dateTo = $dateTo;
 
             $this->_customer->addBooking($this);
-            $this->_hotel->addBooking($this);
+            // On chope l'hotel depuis la room:
+            $this->_room->getHotel()->addBooking($this);
             $this->_room->reserve();
         }
 
@@ -27,9 +28,6 @@
             return $this->_dateTo;
         }
 
-        public function getHotel(): Hotel {
-            return $this->_hotel;
-        }
         public function getRoom(): Room {
             return $this->_room;
         }
@@ -37,9 +35,6 @@
             return $this->_customer;
         }
 
-        public function setHotel(Hotel $hotel) {
-            $this->_hotel = $hotel;
-        }
         public function setRoom(Room $room) {
             $this->_room = $room;
         }
@@ -49,7 +44,7 @@
 
 
         public function __toString():string {
-            return "Réservation du customer \"" . $this->_customer->getFirstName() . " " . $this->_customer->getLastName() . ": " . $this->_hotel->getName(). ", chambre:<br> " . $this->_room  . "Du " . $this->getDateFrom() . " au " . $this->getDateTo() . "<br><br>";
+            return "Réservation du customer \"" . $this->_customer->getFirstName() . " " . $this->_customer->getLastName() . ": " . $this->_room->getHotel(). ", chambre:<br> " . $this->_room  . "Du " . $this->getDateFrom() . " au " . $this->getDateTo() . "<br><br>";
         }
         // Lors d'un booking, l'ajouter a la liste bookings du customer
     }

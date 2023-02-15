@@ -85,7 +85,7 @@
                 }
             }
             if ($compteur == 0) {
-                $result .= "Aucune chambre n'est disponible!\n";
+                $result .= "<span style='color:red;font-weight:bold;'>Aucune chambre n'est disponible!</span>\n";
                 return $result;
             }
             else {
