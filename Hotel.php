@@ -7,6 +7,7 @@
         protected int $_nbrRooms;
         protected string $_address;
         protected array $_roomList;
+        protected array $_bookingList;
 
         // Constructor
         public function __construct(string $name, int $nbrRooms, string $address) {
@@ -14,6 +15,17 @@
             $this->_nbrRooms = $nbrRooms;
             $this->_address = $address;
             $this->_roomList = [];
+            $this->_bookingList = [];
+        }
+
+        public function getBookingList(): array {
+            return $this->_bookingList;
+        }
+        public function printBookingList(): void {
+            echo "Réservations de l'hôtel \"" . $this->getName() . "\":\n";
+            foreach($this->_bookingList as $booking) {
+                echo $booking . "<br>";
+            }
         }
 
         public function getRoomList(): array {
@@ -47,6 +59,10 @@
         
         // Methods
 
+        public function addBooking(Booking $booking) {
+            $this->_bookingList[] = $booking;
+        }
+
         public function addRoom( Room $room ) {
             $this->_roomList[] = $room;
         }
@@ -58,12 +74,18 @@
             }
         }
         public function printRoomDispoList() {
+            $compteur = 0;
             echo "Liste des chambres *disponibles* de l'Hotel " . $this->getName(). "\n<br>";
             foreach($this->_roomList as $room) {
                 if(!$room->getStatus()) {
+                    $compteur += 1;
                     echo " - " . $room . "\n";
                 }
             }
+            if ($compteur == 0) {
+                echo "Aucune chambre n'est disponible!\n";
+            }
+
         }
 
         public function __toString() {

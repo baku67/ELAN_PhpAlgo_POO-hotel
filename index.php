@@ -31,4 +31,11 @@
     // echo $resa1. "<br>";
     // echo $resa2. "<br>";
 
+    echo "<br><br>";
+    echo $hotel1->printRoomDispoList();
+
+
+    echo "<br><br>";
+    echo $hotel1->printBookingList();
+
 ?>

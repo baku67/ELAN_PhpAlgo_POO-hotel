@@ -12,6 +12,7 @@
             $this->_customer = $customer;
 
             $this->_customer->addBooking($this);
+            $this->_hotel->addBooking($this);
             $this->_room->reserve();
         }
 
